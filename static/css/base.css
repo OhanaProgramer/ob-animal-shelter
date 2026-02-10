@@ -1,0 +1,373 @@
+/* Shared foundation for OhanaBuilds */
+/* Not template-specific */
+
+/* === Design Tokens (Colors, spacing, radii, shadows) === */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --text: #1f2a27;
+  --muted: #495853;
+  --line: #cfd9d4;
+  --accent: #2e5f4c;
+  --accent-strong: #224739;
+  --soft: #e7efeb;
+  --section-soft: #edf3f0;
+  --section-mist: #e9efed;
+  --radius: 14px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 0 rgba(22, 38, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(18, 34, 28, 0.08);
+  --container: 1040px;
+}
+
+/* === CSS Reset & Box Model === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* === Global HTML / Document Behavior === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Base Typography & Body Styles === */
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* === Headings & Text Elements === */
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3.15rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+h3 {
+  font-size: 1.08rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent-strong);
+}
+
+/* === Layout Primitives === */
+.container {
+  width: min(var(--container), 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* === Accessibility Utilities === */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--accent-strong);
+  color: #fff;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0 0 10px 0;
+  z-index: 100;
+}
+
+.skip-link:focus-visible {
+  left: 0;
+}
+
+/* === Site Header & Navigation === */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(244, 246, 245, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+.nav-wrap {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.2rem;
+}
+
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  background: var(--soft);
+}
+
+.nav-list .nav-link--support {
+  border-color: #c6d8cf;
+  background: #edf4f0;
+}
+
+/* === Hero Section === */
+.hero {
+  padding: 3rem 0 2.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 1.3rem;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-lead {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+.hero-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: 0.72rem 1rem;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.cta-button--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.cta-button--primary:hover,
+.cta-button--primary:focus-visible {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.cta-button--secondary {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.cta-button--secondary:hover,
+.cta-button--secondary:focus-visible {
+  background: var(--soft);
+}
+
+.hero-visual {
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* === Section Layouts & Background Variants === */
+.section {
+  padding: 2.1rem 0;
+}
+
+.section--soft {
+  background: var(--section-soft);
+}
+
+.section--mist {
+  background: var(--section-mist);
+}
+
+.section-shell {
+  padding: 1.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.section-header .section-intro {
+  color: var(--muted);
+  max-width: 52ch;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+/* === Grid Systems === */
+.section-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* === Card Components === */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.mission-card p:last-child,
+.contact-card p:last-child,
+.support-card p:last-child,
+.step-card p:last-child {
+  margin-bottom: 0;
+}
+
+.support-note {
+  color: var(--muted);
+}
+
+/* === Lists & Content Helpers === */
+.check-list {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.check-list li + li {
+  margin-top: 0.45rem;
+}
+
+.card ul {
+  max-width: 40ch;
+}
+
+/* === Process / Steps Component === */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.text-link {
+  font-weight: 700;
+  text-underline-offset: 2px;
+}
+
+/* === Footer === */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  padding: 1.2rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 980px) {
+  .hero-grid,
+  .section-grid,
+  .contact-grid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 2.3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .section {
+    padding: 1.5rem 0;
+  }
+
+  .section-shell {
+    padding: 0.95rem;
+  }
+}
