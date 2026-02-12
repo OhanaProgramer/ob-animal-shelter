@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://shelter.ohanabuilds.org/"
 languageCode = "en-us"
 title = "Animal Shelter"
 
